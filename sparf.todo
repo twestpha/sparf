@@ -1,0 +1,10 @@
+//##############################################################################
+// Sparf TODO
+//##############################################################################
+
+[x] Randomly pick and instantiate tracks
+[x] Have "hand" of 3-5 tracks shown to player to pick
+[x] Game over/respawn/timer stop logic
+
+[x] Fuckload of Tracks
+    [x] Ramp track
