@@ -32,7 +32,10 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             newTrackPiece.transform.position = currentTrack.endTransform.transform.position;
             newTrackPiece.transform.rotation = currentTrack.endTransform.transform.rotation;
 
+            TrackComponent previousTrack = currentTrack;
             currentTrack = newTrackPiece.GetComponent<TrackComponent>();
+
+            currentTrack.previousTrack = previousTrack;
         }
     }
 }

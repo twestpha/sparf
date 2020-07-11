@@ -13,6 +13,8 @@ public class TrackComponent : MonoBehaviour {
     private Collider coll;
     private PlayerTrackSpawnComponent spawner;
 
+    public TrackComponent previousTrack;
+
     void Start(){
         // Don't execute for track root
         spawner = PlayerTrackSpawnComponent.instance;
@@ -55,6 +57,24 @@ public class TrackComponent : MonoBehaviour {
             if(spawnTimer.Finished()){
                 coll.enabled = true;
                 enabled = false;
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if(collision.collider.tag == "Player"){
+            if(previousTrack != null){
+                // Disable two tracks' ago collision
+                if(previousTrack.previousTrack != null){
+                    previousTrack.previousTrack.GetComponent<Collider>().enabled = false;
+                }
+
+                // Destroy 5 tracks ago
+                try {
+                    Destroy(previousTrack.previousTrack.previousTrack.previousTrack.previousTrack.gameObject);
+                } catch {
+                    // Fuck
+                }
             }
         }
     }

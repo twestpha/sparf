@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7934929283207551408}
   - component: {fileID: 2622093867226347701}
   - component: {fileID: 492000835741336797}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: track_simple_drop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

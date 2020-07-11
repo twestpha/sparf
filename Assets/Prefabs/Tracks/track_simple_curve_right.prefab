@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5104290640490966956}
   - component: {fileID: 5104290640490966953}
   - component: {fileID: 888173772960792559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: track_simple_curve_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
