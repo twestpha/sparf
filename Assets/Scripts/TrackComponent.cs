@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackComponent : MonoBehaviour {
+    private static int previousMaterialIndex = -1;
 
     public GameObject endTransform;
 
@@ -32,7 +33,14 @@ public class TrackComponent : MonoBehaviour {
         float scale = spawner.trackSpawnScaleCurve.Evaluate(0.0f);
         transform.localScale = new Vector3(scale, scale, scale);
 
-        GetComponent<Renderer>().material = spawner.trackMaterials[Random.Range(0, spawner.trackMaterials.Length)];
+        // Lazy shuffle
+        int newMaterialIndex = previousMaterialIndex;
+        while(newMaterialIndex == previousMaterialIndex){
+            newMaterialIndex = Random.Range(0, spawner.trackMaterials.Length);
+        }
+
+        GetComponent<Renderer>().material = spawner.trackMaterials[newMaterialIndex];
+        previousMaterialIndex = newMaterialIndex;
     }
 
     void Update(){
