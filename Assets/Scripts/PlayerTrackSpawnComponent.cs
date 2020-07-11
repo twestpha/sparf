@@ -24,10 +24,11 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     void Update(){
         time += Time.deltaTime;
 
-        if(time > 3.0f){
+        if(time > 2.0f){
             time = 0.0f;
 
-            GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[0]);
+            GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[Random.Range(0, trackPrefabs.Length)]);
+
             newTrackPiece.transform.position = currentTrack.endTransform.transform.position;
             newTrackPiece.transform.rotation = currentTrack.endTransform.transform.rotation;
 
