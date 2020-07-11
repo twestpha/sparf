@@ -714,10 +714,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackRoot: {fileID: 0}
   trackPrefabs:
-  - {fileID: 5104290640490966957, guid: 25a1bba57d95397499856d7a294c9184, type: 3}
+  - {fileID: 7789411400276579441, guid: 51daa16765be0da47a608f11eea92de4, type: 3}
   - {fileID: 7653679780318583952, guid: 612d91d583f59bb4d93a3f9a38749b97, type: 3}
   - {fileID: 7934929283207551412, guid: 72866dde3e2419e4db32c97edd6c4760, type: 3}
-  - {fileID: 7789411400276579441, guid: 51daa16765be0da47a608f11eea92de4, type: 3}
+  - {fileID: 5104290640490966957, guid: 25a1bba57d95397499856d7a294c9184, type: 3}
   - {fileID: 759682116204933976, guid: 2680f99cf27af654eae77a0701fd10c9, type: 3}
   - {fileID: 461393169857656433, guid: 3cafc25f0a7d3e24ebd9e25747fe00e6, type: 3}
   trackMaterials:
@@ -836,10 +836,10 @@ MonoBehaviour:
   - {fileID: 5724486051461237048}
   - {fileID: 1590996265314173951}
   selectionSprites:
-  - {fileID: 21300000, guid: 922c593f317fe3947b9fcec13efafa2f, type: 3}
+  - {fileID: 21300000, guid: 8e93a411fdda0ba45a7c2a5c83901e35, type: 3}
   - {fileID: 21300000, guid: ebfae134dfa9381438f86a486549b18a, type: 3}
   - {fileID: 21300000, guid: 027a0e9aac558d946817b8bd5c470dd6, type: 3}
-  - {fileID: 21300000, guid: 8e93a411fdda0ba45a7c2a5c83901e35, type: 3}
+  - {fileID: 21300000, guid: 922c593f317fe3947b9fcec13efafa2f, type: 3}
   - {fileID: 21300000, guid: d4a250bb1f4f64d488a7c85ba9d8d809, type: 3}
   - {fileID: 21300000, guid: 3d2ccfe7d53f4ea43b12e87968f4f900, type: 3}
 --- !u!1 &3560246138752799815
