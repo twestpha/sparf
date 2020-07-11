@@ -358,7 +358,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057728706}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.01
   m_UseGravity: 1
@@ -608,6 +608,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0a4dab4079ad37640aeaeba96b6f4888, type: 2}
   - {fileID: 2100000, guid: adf8dfa823f5b3d43897b9577429fbea, type: 2}
   - {fileID: 2100000, guid: 3a2e9e545b5fefa49ac384a0e3ed6726, type: 2}
+  - {fileID: 2100000, guid: 96aca9cc0077ba340ad6a493e8053f1c, type: 2}
+  - {fileID: 2100000, guid: b71fd5b75485e7e4cadc446abd199974, type: 2}
   trackSpawnHeightCurve:
     serializedVersion: 2
     m_Curve:
