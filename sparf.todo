@@ -2,8 +2,8 @@
 // Sparf TODO
 //##############################################################################
 [/] Randomly pick and instantiate tracks
+[/] Have "hand" of 3-5 tracks shown to player to pick
 
-[x] Have "hand" of 3-5 tracks shown to player to pick
 [x] Game over/respawn/timer stop logic
 
 [x] Fuckload of Tracks

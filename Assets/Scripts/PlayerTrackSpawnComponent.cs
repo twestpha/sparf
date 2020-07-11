@@ -23,12 +23,16 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     public Sprite[] selectionSprites;
 
     private float roundStartTime;
-
     private int[] buttonTrackIndex;
+    private Vector3 rootStartPosition;
+    private Quaternion rootStartRotation;
 
     void Start(){
         instance = this;
         currentTrack = trackRoot;
+
+        rootStartPosition = trackRoot.transform.position;
+        rootStartRotation = trackRoot.transform.rotation;
 
         roundStartTime = Time.time;
 
@@ -44,13 +48,16 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     void FillOutSelectionButton(int index){
         int randomTrackIndex = Random.Range(0, trackPrefabs.Length);
 
-        Debug.Log(randomTrackIndex);
         selectionButtons[index].transform.GetChild(0).GetComponent<Image>().sprite = selectionSprites[randomTrackIndex];
         buttonTrackIndex[index] = randomTrackIndex;
     }
 
     void Update(){
         timerText.text = (Time.time - roundStartTime).ToString();
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            ResetGame();
+        }
     }
 
     public void ButtonClicked(int index){
@@ -65,5 +72,30 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         currentTrack.previousTrack = previousTrack;
 
         FillOutSelectionButton(index);
+    }
+
+    public void ResetGame(){
+        roundStartTime = Time.time;
+
+        // Kill all track pieces
+        TrackComponent[] tracks = FindObjectsOfType<TrackComponent>();
+        foreach(TrackComponent track in tracks){
+            Destroy(track.gameObject);
+        }
+
+        // Teleport player to home
+        GameObject playerBall = transform.GetChild(0).gameObject;
+        playerBall.transform.localPosition = Vector3.zero;
+        playerBall.transform.localRotation = Quaternion.identity;
+
+        playerBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        // Create new root
+        GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[0]);
+
+        newTrackPiece.transform.position = rootStartPosition;
+        newTrackPiece.transform.rotation = rootStartRotation;
+
+        currentTrack = newTrackPiece.GetComponent<TrackComponent>();
     }
 }
