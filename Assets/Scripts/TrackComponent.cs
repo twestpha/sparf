@@ -31,6 +31,8 @@ public class TrackComponent : MonoBehaviour {
 
         float scale = spawner.trackSpawnScaleCurve.Evaluate(0.0f);
         transform.localScale = new Vector3(scale, scale, scale);
+
+        GetComponent<Renderer>().material = spawner.trackMaterials[Random.Range(0, spawner.trackMaterials.Length)];
     }
 
     void Update(){

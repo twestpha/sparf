@@ -267,7 +267,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc2ec9e4fea3f0459391119c0b8376b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPrefabs: []
+  trackRoot: {fileID: 0}
+  trackPrefabs:
+  - {fileID: 5104290640490966957, guid: 25a1bba57d95397499856d7a294c9184, type: 3}
+  trackMaterials:
+  - {fileID: 2100000, guid: 43846d9001421e745b2f148cc620e99a, type: 2}
+  - {fileID: 2100000, guid: 3b6f8829d3769514ebc1f52fb9e043c6, type: 2}
+  - {fileID: 2100000, guid: c2ca6fd6add79d943bcbfd282291bebf, type: 2}
+  - {fileID: 2100000, guid: 0a4dab4079ad37640aeaeba96b6f4888, type: 2}
+  - {fileID: 2100000, guid: adf8dfa823f5b3d43897b9577429fbea, type: 2}
+  - {fileID: 2100000, guid: 3a2e9e545b5fefa49ac384a0e3ed6726, type: 2}
+  trackSpawnHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.06894742
+      outSlope: -0.06894742
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.12962021
+    - serializedVersion: 3
+      time: 0.7112641
+      value: 0.77301264
+      inSlope: -0.77506626
+      outSlope: -0.77506626
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11987931
+      outWeight: 0.14590298
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -6.47286
+      outSlope: -6.47286
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.045437157
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  trackSpawnScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.70880127
+      inSlope: 0.6096947
+      outSlope: 0.6096947
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0824385
+    - serializedVersion: 3
+      time: 1.0023804
+      value: 1
+      inSlope: -0.046988796
+      outSlope: -0.046988796
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.095566064
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8819385135301915809
 GameObject:
   m_ObjectHideFlags: 0
