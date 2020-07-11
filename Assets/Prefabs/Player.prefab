@@ -654,8 +654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody: {fileID: 2057728708}
   distanceOffset: 2.5
-  heightOffset: 2
-  viewHeightOffset: 1.6
+  heightOffset: 2.5
+  viewHeightOffset: 1.8
   positionSeekTime: 0.2
   viewSeekTime: 0.1
 --- !u!1 &2497605892757680960
