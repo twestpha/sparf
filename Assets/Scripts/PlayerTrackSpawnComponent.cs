@@ -19,35 +19,51 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
     [Header("UI")]
     public Text timerText;
+    public Button[] selectionButtons;
+    public Sprite[] selectionSprites;
 
     private float roundStartTime;
 
-    private float tempTime;
+    private int[] buttonTrackIndex;
 
     void Start(){
         instance = this;
         currentTrack = trackRoot;
 
         roundStartTime = Time.time;
+
+        buttonTrackIndex = new int[5];
+
+        FillOutSelectionButton(0);
+        FillOutSelectionButton(1);
+        FillOutSelectionButton(2);
+        FillOutSelectionButton(3);
+        FillOutSelectionButton(4);
+    }
+
+    void FillOutSelectionButton(int index){
+        int randomTrackIndex = Random.Range(0, trackPrefabs.Length);
+
+        Debug.Log(randomTrackIndex);
+        selectionButtons[index].transform.GetChild(0).GetComponent<Image>().sprite = selectionSprites[randomTrackIndex];
+        buttonTrackIndex[index] = randomTrackIndex;
     }
 
     void Update(){
-        tempTime += Time.deltaTime;
-
-        if(tempTime > 1.0f){
-            tempTime = 0.0f;
-
-            GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[Random.Range(0, trackPrefabs.Length)]);
-
-            newTrackPiece.transform.position = currentTrack.endTransform.transform.position;
-            newTrackPiece.transform.rotation = currentTrack.endTransform.transform.rotation;
-
-            TrackComponent previousTrack = currentTrack;
-            currentTrack = newTrackPiece.GetComponent<TrackComponent>();
-
-            currentTrack.previousTrack = previousTrack;
-        }
-
         timerText.text = (Time.time - roundStartTime).ToString();
+    }
+
+    public void ButtonClicked(int index){
+        GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[buttonTrackIndex[index]]);
+
+        newTrackPiece.transform.position = currentTrack.endTransform.transform.position;
+        newTrackPiece.transform.rotation = currentTrack.endTransform.transform.rotation;
+
+        TrackComponent previousTrack = currentTrack;
+        currentTrack = newTrackPiece.GetComponent<TrackComponent>();
+
+        currentTrack.previousTrack = previousTrack;
+
+        FillOutSelectionButton(index);
     }
 }
