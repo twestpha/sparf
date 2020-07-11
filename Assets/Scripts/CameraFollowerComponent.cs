@@ -11,9 +11,12 @@ public class CameraFollowerComponent : MonoBehaviour {
     public float viewHeightOffset;
 
     public float positionSeekTime;
-    public float viewSeekSpeed;
+    public float viewSeekTime;
 
-    private Vector3 cameraVelocity;
+    private Vector3 cameraPositionVelocity;
+
+    private Vector3 cameraLookTarget;
+    private Vector3 cameraLookVelocity;
 
     void Update(){
         // Get ball velocity
@@ -24,14 +27,9 @@ public class CameraFollowerComponent : MonoBehaviour {
         Vector3 cameraTargetPosition = playerRigidBody.transform.position - (ballVelocity * distanceOffset);
         cameraTargetPosition.y += heightOffset;
 
-        // Seek this position and look at ball over time
-        transform.position = Vector3.SmoothDamp(transform.position, cameraTargetPosition, ref cameraVelocity, positionSeekTime);
-
-        transform.rotation = Quaternion.RotateTowards(
-            transform.rotation,
-            Quaternion.LookRotation((playerRigidBody.transform.position + Vector3.up * viewHeightOffset) - transform.position),
-            Time.deltaTime * viewSeekSpeed
-        );
-
+        // Seek position and look-at over time
+        transform.position = Vector3.SmoothDamp(transform.position, cameraTargetPosition, ref cameraPositionVelocity, positionSeekTime);
+        cameraLookTarget = Vector3.SmoothDamp(cameraLookTarget, playerRigidBody.transform.position + Vector3.up * viewHeightOffset, ref cameraLookVelocity, viewSeekTime);
+        transform.LookAt(cameraLookTarget);
     }
 }
