@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackComponent : MonoBehaviour {
-    private static int previousMaterialIndex = -1;
+    private static int previousMaterialIndex = 1;
 
     public GameObject endTransform;
 
     private Vector3 spawnedPosition;
+    private Quaternion spawnedRotation;
     private Timer spawnTimer;
 
     private Collider coll;
@@ -24,6 +25,8 @@ public class TrackComponent : MonoBehaviour {
         }
 
         spawnedPosition = transform.position;
+        spawnedRotation = transform.rotation;
+
         spawnTimer = new Timer(0.25f);
         spawnTimer.Start();
 
@@ -31,6 +34,9 @@ public class TrackComponent : MonoBehaviour {
         coll.enabled = false;
 
         transform.position += (Vector3.up * spawner.trackSpawnHeightCurve.Evaluate(0.0f));
+
+        Vector3 startRotation = transform.rotation.eulerAngles + (Vector3.right * spawner.trackSpawnRotationCurve.Evaluate(0.0f));
+        transform.rotation = Quaternion.Euler(startRotation);
 
         float scale = spawner.trackSpawnScaleCurve.Evaluate(0.0f);
         transform.localScale = new Vector3(scale, scale, scale);
@@ -50,6 +56,9 @@ public class TrackComponent : MonoBehaviour {
             float t = spawnTimer.Parameterized();
 
             transform.position = spawnedPosition + (Vector3.up * spawner.trackSpawnHeightCurve.Evaluate(t));
+
+            Vector3 newRotation = spawnedRotation.eulerAngles + (Vector3.right * spawner.trackSpawnRotationCurve.Evaluate(t));
+            transform.rotation = Quaternion.Euler(newRotation);
 
             float scale = spawner.trackSpawnScaleCurve.Evaluate(t);
             transform.localScale = new Vector3(scale, scale, scale);

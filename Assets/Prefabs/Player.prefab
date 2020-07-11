@@ -666,7 +666,43 @@ MonoBehaviour:
     m_RotationOrder: 4
   trackSpawnRotationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 12.652998
+      outSlope: 12.652998
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.47356188
+      value: 5.9919777
+      inSlope: 0.71852756
+      outSlope: 0.71852756
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39298117
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.77920914
+      value: 1.0196173
+      inSlope: -8.130892
+      outSlope: -8.130892
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.31187335
+      outWeight: 0.23519352
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.6180234
+      outSlope: -4.6180234
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
