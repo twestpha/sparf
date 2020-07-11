@@ -24,7 +24,7 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     void Update(){
         time += Time.deltaTime;
 
-        if(time > 2.0f){
+        if(time > 1.0f){
             time = 0.0f;
 
             GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[Random.Range(0, trackPrefabs.Length)]);
