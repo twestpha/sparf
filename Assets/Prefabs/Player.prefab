@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -463,14 +463,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2497605892496651844}
-  m_LocalRotation: {x: 0.116480246, y: 0.65207136, z: -0.1023448, w: 0.7421327}
+  m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.7071066}
   m_LocalPosition: {x: -3.56, y: 1.0569999, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 77390067}
   m_Father: {fileID: 2497605892757680975}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 17.84, y: 82.608, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!20 &2497605892496651846
 Camera:
   m_ObjectHideFlags: 0
@@ -600,7 +600,6 @@ MonoBehaviour:
   - {fileID: 7653679780318583952, guid: 612d91d583f59bb4d93a3f9a38749b97, type: 3}
   - {fileID: 7934929283207551412, guid: 72866dde3e2419e4db32c97edd6c4760, type: 3}
   - {fileID: 7789411400276579441, guid: 51daa16765be0da47a608f11eea92de4, type: 3}
-  - {fileID: 461393169857656433, guid: 3cafc25f0a7d3e24ebd9e25747fe00e6, type: 3}
   trackMaterials:
   - {fileID: 2100000, guid: 43846d9001421e745b2f148cc620e99a, type: 2}
   - {fileID: 2100000, guid: 3b6f8829d3769514ebc1f52fb9e043c6, type: 2}
