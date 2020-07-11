@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTrackSpawnComponent : MonoBehaviour {
     public static PlayerTrackSpawnComponent instance;
 
+    [Header("Track Generation")]
     public TrackComponent trackRoot;
     private TrackComponent currentTrack;
 
@@ -13,19 +15,27 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     public Material[] trackMaterials;
     public AnimationCurve trackSpawnHeightCurve;
     public AnimationCurve trackSpawnScaleCurve;
+    public AnimationCurve trackSpawnRotationCurve;
 
-    private float time;
+    [Header("UI")]
+    public Text timerText;
+
+    private float roundStartTime;
+
+    private float tempTime;
 
     void Start(){
         instance = this;
         currentTrack = trackRoot;
+
+        roundStartTime = Time.time;
     }
 
     void Update(){
-        time += Time.deltaTime;
+        tempTime += Time.deltaTime;
 
-        if(time > 1.0f){
-            time = 0.0f;
+        if(tempTime > 1.0f){
+            tempTime = 0.0f;
 
             GameObject newTrackPiece = GameObject.Instantiate(trackPrefabs[Random.Range(0, trackPrefabs.Length)]);
 
@@ -37,5 +47,7 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
             currentTrack.previousTrack = previousTrack;
         }
+
+        timerText.text = (Time.time - roundStartTime).ToString();
     }
 }
