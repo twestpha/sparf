@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TrevorScene.unity
+    guid: 70bb864357c52774792c4ffefd1d10f5
   m_configObjects: {}
