@@ -18,7 +18,6 @@ public class CameraFollowerComponent : MonoBehaviour {
     void Update(){
         // Get ball velocity
         Vector3 ballVelocity = playerRigidBody.velocity;
-        ballVelocity.y = 0.0f;
         ballVelocity.Normalize();
 
         // Find position behind that and up using the offsets
