@@ -17,6 +17,9 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     public AnimationCurve trackSpawnScaleCurve;
     public AnimationCurve trackSpawnRotationCurve;
 
+    private int trackDeckNextCardIndex;
+    public int[] trackDeck;
+
     [Header("UI")]
     public Text timerText;
     public Button[] selectionButtons;
@@ -48,6 +51,8 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
         roundStartTime = Time.time;
 
+        ShuffleTrackDeck();
+
         buttonTrackIndex = new int[5];
 
         FillOutSelectionButton(0);
@@ -57,11 +62,35 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         FillOutSelectionButton(4);
     }
 
-    void FillOutSelectionButton(int index){
-        int randomTrackIndex = Random.Range(0, trackPrefabs.Length);
+    private void ShuffleTrackDeck(){
+        trackDeckNextCardIndex = 0;
 
-        selectionButtons[index].transform.GetChild(0).GetComponent<Image>().sprite = selectionSprites[randomTrackIndex];
-        buttonTrackIndex[index] = randomTrackIndex;
+        // My boy fisher and my bro Yates
+        for(int i = 0; i < trackDeck.Length; ++i){
+            int swapIndex = Random.Range(i, trackDeck.Length);
+
+            int temp = trackDeck[i];
+            trackDeck[i] = trackDeck[swapIndex];
+            trackDeck[swapIndex] = temp;
+        }
+    }
+
+    private int GetNextCard(){
+        int nextTrackCard = trackDeck[trackDeckNextCardIndex];
+
+        trackDeckNextCardIndex++;
+        if(trackDeckNextCardIndex >= trackDeck.Length){
+            ShuffleTrackDeck();
+        }
+
+        return nextTrackCard;
+    }
+
+    void FillOutSelectionButton(int index){
+        int nextCard = GetNextCard();
+
+        selectionButtons[index].transform.GetChild(0).GetComponent<Image>().sprite = selectionSprites[nextCard];
+        buttonTrackIndex[index] = nextCard;
     }
 
     void Update(){
@@ -99,6 +128,8 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     }
 
     public void DiscardAllCards(){
+        ShuffleTrackDeck();
+
         for(int i = 0; i < 5; ++i){
             IEnumerator coroutine = DiscardAndDrawNewCard(i);
             StartCoroutine(coroutine);

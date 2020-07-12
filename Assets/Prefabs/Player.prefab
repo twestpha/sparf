@@ -1178,7 +1178,6 @@ MonoBehaviour:
   - {fileID: 7653679780318583952, guid: 612d91d583f59bb4d93a3f9a38749b97, type: 3}
   - {fileID: 7934929283207551412, guid: 72866dde3e2419e4db32c97edd6c4760, type: 3}
   - {fileID: 5104290640490966957, guid: 25a1bba57d95397499856d7a294c9184, type: 3}
-  - {fileID: 759682116204933976, guid: 2680f99cf27af654eae77a0701fd10c9, type: 3}
   - {fileID: 461393169857656433, guid: 3cafc25f0a7d3e24ebd9e25747fe00e6, type: 3}
   - {fileID: 9095048467573237102, guid: e29aded32ff05a04ca2d8e4beb9b0692, type: 3}
   - {fileID: 8002610746684010685, guid: 794272170cf8db44f8c9889320097d7e, type: 3}
@@ -1186,7 +1185,6 @@ MonoBehaviour:
   - {fileID: 871567119008859293, guid: 7644ae9fd4f296f4ba79f7224813edd3, type: 3}
   - {fileID: 8335138695268895721, guid: 5f21b65e2bbfdad40b21dd181e36755f, type: 3}
   - {fileID: 2969588849551750716, guid: d480891101ddf23439ec10f63c8fe7c6, type: 3}
-  - {fileID: 79049161004240856, guid: 43022516d6a91e142801e4a23a600644, type: 3}
   - {fileID: 5278619895390447163, guid: 1b0e72f7b40e3b9479536e338266c42b, type: 3}
   trackMaterials:
   - {fileID: 2100000, guid: 43846d9001421e745b2f148cc620e99a, type: 2}
@@ -1296,6 +1294,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  trackDeck: 0000000001000000020000000300000004000000
   timerText: {fileID: 1882895818}
   selectionButtons:
   - {fileID: 2838525689103834395}
@@ -1308,7 +1307,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ebfae134dfa9381438f86a486549b18a, type: 3}
   - {fileID: 21300000, guid: 027a0e9aac558d946817b8bd5c470dd6, type: 3}
   - {fileID: 21300000, guid: 922c593f317fe3947b9fcec13efafa2f, type: 3}
-  - {fileID: 21300000, guid: d4a250bb1f4f64d488a7c85ba9d8d809, type: 3}
   - {fileID: 21300000, guid: 3d2ccfe7d53f4ea43b12e87968f4f900, type: 3}
   - {fileID: 21300000, guid: d80e7b202f3d2204b92064bd89e46353, type: 3}
   - {fileID: 21300000, guid: 6c70411ba2f73624aba3c4a84b01ff7e, type: 3}
@@ -1316,7 +1314,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c4af42b2097c7204493630dbbc7f0469, type: 3}
   - {fileID: 21300000, guid: bbf87fe75f930cc47ad7b0948bfdd710, type: 3}
   - {fileID: 21300000, guid: 54db83e92b8bbdc42b89df67e21b8c70, type: 3}
-  - {fileID: 21300000, guid: c2e7e0c9bdca2984bab972288b978e9b, type: 3}
   - {fileID: 21300000, guid: d774e69c013586a44b7512d296a5678e, type: 3}
   hiScoreTimerText: {fileID: 9515036}
   hiScoreExcitementText: {fileID: 38581380}
