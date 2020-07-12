@@ -116,6 +116,10 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             yield return null;
         }
 
+        // Make sure they're fully faded out
+        selectionButtonImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        selectionChildImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
         Timer waitTimer = new Timer(1.0f);
         waitTimer.Start();
 
