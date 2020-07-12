@@ -27,6 +27,9 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     private Vector3 rootStartPosition;
     private Quaternion rootStartRotation;
 
+    [Header("Physics")]
+    public PhysicMaterial physicsMaterial;
+
     void Start(){
         instance = this;
         currentTrack = trackRoot;
@@ -53,11 +56,18 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     }
 
     void Update(){
-        timerText.text = (Time.time - roundStartTime).ToString();
+        float elapsed = Time.time - roundStartTime;
+        timerText.text = elapsed.ToString("0.00");
 
         if(Input.GetKeyDown(KeyCode.R)){
             ResetGame();
         }
+
+        physicsMaterial.dynamicFriction = Mathf.Lerp(0.09f, 0.03f, elapsed / 60.0f);
+    }
+
+    void OnDestroy(){
+        physicsMaterial.dynamicFriction = 0.09f;
     }
 
     public void ButtonClicked(int index){
@@ -106,6 +116,13 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             yield return null;
         }
 
+        Timer waitTimer = new Timer(1.0f);
+        waitTimer.Start();
+
+        while(!waitTimer.Finished()){
+            yield return null;
+        }
+
         FillOutSelectionButton(index);
 
         Timer showTimer = new Timer(0.4f);
@@ -138,6 +155,8 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
     public void ResetGame(){
         roundStartTime = Time.time;
+
+        physicsMaterial.dynamicFriction = 0.09f;
 
         // Kill all track pieces
         TrackComponent[] tracks = FindObjectsOfType<TrackComponent>();

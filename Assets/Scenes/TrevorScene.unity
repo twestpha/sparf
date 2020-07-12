@@ -399,10 +399,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 77390067, guid: ef61161afe202ad4eafc56fe8a5ea765, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2497605892757680960, guid: ef61161afe202ad4eafc56fe8a5ea765,
         type: 3}
       propertyPath: m_Name
@@ -468,21 +464,6 @@ PrefabInstance:
       propertyPath: trackRoot
       value: 
       objectReference: {fileID: 2082041495}
-    - target: {fileID: 8250587873276035595, guid: ef61161afe202ad4eafc56fe8a5ea765,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250587873276035595, guid: ef61161afe202ad4eafc56fe8a5ea765,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250587873276035595, guid: ef61161afe202ad4eafc56fe8a5ea765,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef61161afe202ad4eafc56fe8a5ea765, type: 3}
 --- !u!4 &6713202366340488992
