@@ -121,11 +121,10 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             // Rotate 0 to -45
             selectionButtonImage.rectTransform.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, t * -45.0f));
 
-            // Fall down 205 to 140
-            selectionButtonImage.rectTransform.localPosition = new Vector3(
-                selectionButtonImage.rectTransform.localPosition.x,
-                Mathf.Lerp(205.0f, 140.0f, t),
-                selectionButtonImage.rectTransform.localPosition.z
+            // Fall down -130 to -240
+            selectionButtonImage.rectTransform.anchoredPosition = new Vector2(
+                selectionButtonImage.rectTransform.anchoredPosition.x,
+                Mathf.Lerp(-130.0f, -240.0f, t)
             );
 
             // Fade out
@@ -161,11 +160,10 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             float t = showTimer.Parameterized();
             t *= t;
 
-            // Fall down from top 255 to 205
-            selectionButtonImage.rectTransform.localPosition = new Vector3(
-                selectionButtonImage.rectTransform.localPosition.x,
-                Mathf.Lerp(255.0f, 205.0f, t),
-                selectionButtonImage.rectTransform.localPosition.z
+            // Fall down from top -80 to -130.0
+            selectionButtonImage.rectTransform.anchoredPosition = new Vector2(
+                selectionButtonImage.rectTransform.anchoredPosition.x,
+                Mathf.Lerp(-80.0f, -130.0f, t)
             );
 
             // Fade in
