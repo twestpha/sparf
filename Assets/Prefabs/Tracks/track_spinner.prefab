@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 871567118384527708}
   - component: {fileID: 871567118384527706}
   - component: {fileID: 871567118384527705}
+  - component: {fileID: 1835880274}
   m_Layer: 8
   m_Name: spinner
   m_TagString: Untagged
@@ -111,6 +112,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 1
+--- !u!114 &1835880274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871567118384527710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba349af29fc5e84792921990a690fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871567119008859293
 GameObject:
   m_ObjectHideFlags: 0

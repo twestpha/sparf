@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinnerComponent : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+public class SpinnerComponent : MonoBehaviour {
+    void OnCollisionEnter(Collision collision){
+        if(collision.collider.tag == "Player"){
+            PlayerTrackSpawnComponent.instance.DiscardAllCards();
+        }
     }
 }
