@@ -21,11 +21,17 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     public Text timerText;
     public Button[] selectionButtons;
     public Sprite[] selectionSprites;
+    public Text hiScoreTimerText;
+    public Text hiScoreExcitementText;
+    public Image fadeLayer;
 
     private float roundStartTime;
+    private float hiScore;
     private int[] buttonTrackIndex;
     private Vector3 rootStartPosition;
     private Quaternion rootStartRotation;
+
+    private bool runningTimer = true;
 
     [Header("Physics")]
     public PhysicMaterial physicsMaterial;
@@ -33,6 +39,9 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     void Start(){
         instance = this;
         currentTrack = trackRoot;
+
+        hiScoreTimerText.enabled = false;
+        hiScoreExcitementText.enabled = false;
 
         rootStartPosition = trackRoot.transform.position;
         rootStartRotation = trackRoot.transform.rotation;
@@ -57,12 +66,16 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
     void Update(){
         float elapsed = Time.time - roundStartTime;
-        timerText.text = elapsed.ToString("0.00");
+
+        if(runningTimer){
+            timerText.text = elapsed.ToString("0.00");
+        }
 
         if(Input.GetKeyDown(KeyCode.R)){
             ResetGame();
         }
 
+        // Difficulty curve
         physicsMaterial.dynamicFriction = Mathf.Lerp(0.09f, 0.03f, elapsed / 60.0f);
     }
 
@@ -165,7 +178,55 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     }
 
     public void ResetGame(){
-        roundStartTime = Time.time;
+        IEnumerator coroutine = ResetGameCoroutine();
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator ResetGameCoroutine(){
+        runningTimer = false;
+        float officialElapsed = Time.time - roundStartTime;
+
+        Timer waitTimer = new Timer(2.5f);
+        waitTimer.Start();
+
+        GameObject playerBall = transform.GetChild(0).gameObject;
+        Rigidbody playerBallBody = playerBall.GetComponent<Rigidbody>();
+        playerBallBody.velocity = Vector3.zero;
+        playerBallBody.constraints = RigidbodyConstraints.FreezePosition;
+
+        bool hiScoreAchieved = false;
+        if(officialElapsed > hiScore){
+            hiScore = officialElapsed;
+            hiScoreAchieved = true;
+
+            hiScoreExcitementText.enabled = true;
+        }
+
+        // flash the stopped time for a second, and if it's a high score, show high score graphic
+        // Also fade out to black
+        while(!waitTimer.Finished()){
+            float t = (waitTimer.Parameterized() * Mathf.Sin(Time.time * 30.0f)) + 1.0f;
+            timerText.rectTransform.localScale = new Vector3(t, t, t);
+
+            if(hiScoreAchieved){
+                hiScoreExcitementText.color = Color.HSVToRGB(Time.time % 1.0f, 1.0f, 1.0f);
+            }
+
+            float fade_t = waitTimer.Parameterized();
+            fade_t *= fade_t * fade_t;
+
+            fadeLayer.color = new Color(0.0f, 0.0f, 0.0f, fade_t);
+
+            yield return null;
+        }
+
+        if(hiScoreAchieved){
+            hiScoreTimerText.enabled = true;
+            hiScoreTimerText.text = officialElapsed.ToString("0.00");
+        }
+
+        hiScoreExcitementText.enabled = false;
+        timerText.rectTransform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
         physicsMaterial.dynamicFriction = 0.09f;
 
@@ -180,7 +241,6 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         }
 
         // Teleport player to home
-        GameObject playerBall = transform.GetChild(0).gameObject;
         playerBall.transform.localPosition = Vector3.zero;
         playerBall.transform.localRotation = Quaternion.identity;
 
@@ -193,5 +253,26 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         newTrackPiece.transform.rotation = rootStartRotation;
 
         currentTrack = newTrackPiece.GetComponent<TrackComponent>();
+
+        // Fade back in
+        playerBallBody.constraints = RigidbodyConstraints.None;
+
+        Timer fadeInTimer = new Timer(2.5f);
+        fadeInTimer.Start();
+
+        while(!fadeInTimer.Finished()){
+            float t = fadeInTimer.Parameterized();
+            t *= t * t;
+
+            fadeLayer.color = new Color(0.0f, 0.0f, 0.0f, 1.0f - t);
+
+            yield return null;
+        }
+
+        fadeLayer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        roundStartTime = Time.time;
+        runningTimer = true;
     }
 }
