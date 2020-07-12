@@ -234,7 +234,7 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         // flash the stopped time for a second, and if it's a high score, show high score graphic
         // Also fade out to black
         while(!waitTimer.Finished()){
-            float t = (waitTimer.Parameterized() * Mathf.Sin(Time.time * 30.0f)) + 1.0f;
+            float t = (waitTimer.Parameterized() * 0.5f * Mathf.Sin(Time.time * 30.0f)) + 1.0f;
             timerText.rectTransform.localScale = new Vector3(t, t, t);
 
             if(hiScoreAchieved){
