@@ -81,11 +81,28 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         Timer discardTimer = new Timer(0.4f);
         discardTimer.Start();
 
+        Image selectionButtonImage = selectionButtons[index].GetComponent<Image>();
+        Image selectionChildImage = selectionButtonImage.transform.GetChild(0).GetComponent<Image>();
+
         while(!discardTimer.Finished()){
-            // Rotate
-            // Fall down
+            float t = discardTimer.Parameterized();
+            t = Mathf.Sqrt(t);
+
+            // Rotate 0 to -45
+            selectionButtonImage.rectTransform.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, t * -45.0f));
+
+            // Fall down 205 to 140
+            selectionButtonImage.rectTransform.localPosition = new Vector3(
+                selectionButtonImage.rectTransform.localPosition.x,
+                Mathf.Lerp(205.0f, 140.0f, t),
+                selectionButtonImage.rectTransform.localPosition.z
+            );
+
             // Fade out
+            selectionButtonImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - t);
             // Also fade out sprite
+            selectionChildImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - t);
+
             yield return null;
         }
 
@@ -94,16 +111,29 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         Timer showTimer = new Timer(0.4f);
         showTimer.Start();
 
-        // Rotate vertical
-
-        while(!showTimer.Finished()){
-            // Fall down from top
-            // Fade in
-            // Also fade in sprite
-            yield return null;
-        }
+        // Reset rotation
+        selectionButtonImage.rectTransform.localRotation = new Quaternion();
 
         selectionButtons[index].interactable = true;
+
+        while(!showTimer.Finished()){
+            float t = showTimer.Parameterized();
+            t *= t;
+
+            // Fall down from top 255 to 205
+            selectionButtonImage.rectTransform.localPosition = new Vector3(
+                selectionButtonImage.rectTransform.localPosition.x,
+                Mathf.Lerp(255.0f, 205.0f, t),
+                selectionButtonImage.rectTransform.localPosition.z
+            );
+
+            // Fade in
+            selectionButtonImage.color = new Color(1.0f, 1.0f, 1.0f, t);
+            // Also fade in sprite
+            selectionChildImage.color = new Color(1.0f, 1.0f, 1.0f, t);
+
+            yield return null;
+        }
     }
 
     public void ResetGame(){
