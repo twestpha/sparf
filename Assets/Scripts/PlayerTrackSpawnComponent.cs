@@ -223,6 +223,8 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
             hiScoreTimerText.text = officialElapsed.ToString("0.00");
         }
 
+        timerText.text = "0.00";
+
         hiScoreExcitementText.enabled = false;
         timerText.rectTransform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
