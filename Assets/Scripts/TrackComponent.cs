@@ -48,6 +48,15 @@ public class TrackComponent : MonoBehaviour {
         }
 
         GetComponent<Renderer>().material = spawner.trackMaterials[newMaterialIndex];
+
+        for(int i = 0; i < transform.childCount; ++i){
+            Renderer r = transform.GetChild(i).GetComponent<Renderer>();
+
+            if(r != null){
+                r.material = spawner.trackMaterials[newMaterialIndex];
+            }
+        }
+
         previousMaterialIndex = newMaterialIndex;
     }
 
