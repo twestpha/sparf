@@ -71,7 +71,39 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
         currentTrack.previousTrack = previousTrack;
 
+        selectionButtons[index].interactable = false;
+
+        IEnumerator coroutine = DiscardAndDrawNewCard(index);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator DiscardAndDrawNewCard(int index){
+        Timer discardTimer = new Timer(0.4f);
+        discardTimer.Start();
+
+        while(!discardTimer.Finished()){
+            // Rotate
+            // Fall down
+            // Fade out
+            // Also fade out sprite
+            yield return null;
+        }
+
         FillOutSelectionButton(index);
+
+        Timer showTimer = new Timer(0.4f);
+        showTimer.Start();
+
+        // Rotate vertical
+
+        while(!showTimer.Finished()){
+            // Fall down from top
+            // Fade in
+            // Also fade in sprite
+            yield return null;
+        }
+
+        selectionButtons[index].interactable = true;
     }
 
     public void ResetGame(){
