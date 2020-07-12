@@ -28,6 +28,9 @@ public class PlayerContactComponent : MonoBehaviour {
             calcSMA();
             detectCollisions();
             if (shouldReset()) {
+                Debug.Log("timeSinceLastContact: " + timeSinceLastContact);
+                Debug.Log("currentTrackTag: " + currentTrackTag);
+                Debug.Log("velocitySMA: " + velocitySMA);
                 reset();
                 PlayerTrackSpawnComponent.instance.ResetGame();
             }
