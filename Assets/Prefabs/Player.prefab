@@ -755,6 +755,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 3
+  raycastDistance: 5
+  smaLength: 90
+  loopDeathOnSMABelow: 1
 --- !u!1 &615164468678691260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1321,7 @@ MonoBehaviour:
   hiScoreTimerText: {fileID: 9515036}
   hiScoreExcitementText: {fileID: 38581380}
   fadeLayer: {fileID: 1087377539}
+  runningTimer: 1
   physicsMaterial: {fileID: 13400000, guid: 297a846384706fc408ff9d907ba1addd, type: 2}
 --- !u!1 &3560246138752799815
 GameObject:

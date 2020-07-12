@@ -34,7 +34,7 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
     private Vector3 rootStartPosition;
     private Quaternion rootStartRotation;
 
-    private bool runningTimer = true;
+    public bool runningTimer = true;
 
     [Header("Physics")]
     public PhysicMaterial physicsMaterial;
