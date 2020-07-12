@@ -81,13 +81,20 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
         currentTrack.previousTrack = previousTrack;
 
-        selectionButtons[index].interactable = false;
-
         IEnumerator coroutine = DiscardAndDrawNewCard(index);
         StartCoroutine(coroutine);
     }
 
+    public void DiscardAllCards(){
+        for(int i = 0; i < 5; ++i){
+            IEnumerator coroutine = DiscardAndDrawNewCard(i);
+            StartCoroutine(coroutine);
+        }
+    }
+
     private IEnumerator DiscardAndDrawNewCard(int index){
+        selectionButtons[index].interactable = false;
+
         Timer discardTimer = new Timer(0.4f);
         discardTimer.Start();
 
@@ -161,6 +168,8 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         roundStartTime = Time.time;
 
         physicsMaterial.dynamicFriction = 0.09f;
+
+        DiscardAllCards();
 
         // Kill all track pieces
         TrackComponent[] tracks = FindObjectsOfType<TrackComponent>();
