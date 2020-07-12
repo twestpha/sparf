@@ -53,7 +53,7 @@ public class PlayerContactComponent : MonoBehaviour {
 
     private void detectCollisions() {
             RaycastHit hit;
-            if (Physics.SphereCast(transform.position, 0, transform.forward, out hit, raycastDistance, trackLayerMask)) {
+            if (Physics.SphereCast(transform.position, 1.2f, Vector3.up * -1.0f, out hit, raycastDistance, trackLayerMask)) {
                 timeSinceLastContact = 0;
                 currentTrackTag = hit.collider.tag;
             } else {
