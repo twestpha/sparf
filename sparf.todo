@@ -3,6 +3,7 @@
 //##############################################################################
 [/] Randomly pick and instantiate tracks
 [/] Have "hand" of 3-5 tracks shown to player to pick
+[/] Timer and high score mechanics
 
 [x] Game over/respawn/timer stop logic
 [x] Polish card drawing
