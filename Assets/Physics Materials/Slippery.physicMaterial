@@ -7,7 +7,7 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Slippery
-  dynamicFriction: 0.12
+  dynamicFriction: 0.09
   staticFriction: 0.01
   bounciness: 0
   frictionCombine: 1
