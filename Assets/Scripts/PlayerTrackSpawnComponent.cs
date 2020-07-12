@@ -127,7 +127,7 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
         selectionButtonImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         selectionChildImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-        Timer waitTimer = new Timer(1.0f);
+        Timer waitTimer = new Timer(1.5f);
         waitTimer.Start();
 
         while(!waitTimer.Finished()){
@@ -169,7 +169,9 @@ public class PlayerTrackSpawnComponent : MonoBehaviour {
 
         physicsMaterial.dynamicFriction = 0.09f;
 
-        DiscardAllCards();
+        for(int i = 0; i < 5; ++i){
+            FillOutSelectionButton(i);
+        }
 
         // Kill all track pieces
         TrackComponent[] tracks = FindObjectsOfType<TrackComponent>();
